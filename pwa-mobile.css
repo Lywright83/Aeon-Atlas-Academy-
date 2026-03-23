@@ -1,0 +1,258 @@
+/* ============================================================
+   AEON PWA — Mobile Responsive CSS
+   Collapses sidebar → bottom nav bar at ≤768px
+   Matches existing class names from your index.html exactly
+   ============================================================ */
+
+/* ── HAMBURGER BUTTON (hidden on desktop) ───────────────────── */
+.hamburger-btn {
+  display: none;
+  position: fixed;
+  top: 16px;
+  left: 16px;
+  z-index: 1100;
+  background: rgba(108, 99, 255, 0.2);
+  border: 1px solid rgba(108, 99, 255, 0.4);
+  border-radius: 10px;
+  padding: 10px 12px;
+  cursor: pointer;
+  backdrop-filter: blur(10px);
+  color: #a78bfa;
+  font-size: 1.1rem;
+  transition: background 0.2s ease;
+}
+
+.hamburger-btn:hover {
+  background: rgba(108, 99, 255, 0.35);
+}
+
+/* ── MOBILE OVERLAY (sidebar drawer backdrop) ───────────────── */
+.sidebar-overlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.6);
+  z-index: 900;
+  backdrop-filter: blur(2px);
+}
+
+.sidebar-overlay.active {
+  display: block;
+}
+
+/* ============================================================
+   MOBILE BREAKPOINT — max-width: 768px
+   ============================================================ */
+@media (max-width: 768px) {
+
+  /* ── SHOW HAMBURGER ───────────────────────────────────────── */
+  .hamburger-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  /* ── APP CONTAINER — stack vertically ────────────────────── */
+  .app-container {
+    flex-direction: column;
+    padding-bottom: 70px; /* Reserve space for bottom nav */
+  }
+
+  /* ── SIDEBAR — hidden by default, slides in as drawer ──────── */
+  .sidebar {
+    position: fixed;
+    left: -280px;
+    top: 0;
+    bottom: 0;
+    width: 260px;
+    z-index: 1000;
+    transition: left 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    overflow-y: auto;
+    border-radius: 0 20px 20px 0;
+  }
+
+  .sidebar.open {
+    left: 0;
+  }
+
+  /* ── USER PROFILE in sidebar — compact on mobile ─────────── */
+  .user-profile {
+    padding: 12px 16px;
+    margin-top: auto;
+  }
+
+  /* ── MAIN CONTENT — full width, no left margin ───────────── */
+  .main-content {
+    width: 100%;
+    margin-left: 0;
+    padding: 0;
+  }
+
+  /* ── TOPBAR — adjust for hamburger button space ──────────── */
+  .topbar {
+    padding: 12px 16px 12px 60px; /* Left padding clears hamburger */
+    border-radius: 0;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  .breadcrumbs {
+    font-size: 0.8rem;
+  }
+
+  /* ── GAMIFICATION STATS — shrink pills ───────────────────── */
+  .gamification-stats {
+    gap: 6px;
+    flex-wrap: wrap;
+  }
+
+  .stat-pill {
+    padding: 5px 10px;
+    font-size: 0.75rem;
+  }
+
+  /* ── VIEW CONTAINER — tighter padding ────────────────────── */
+  .view-container {
+    padding: 16px;
+  }
+
+  .view-title {
+    font-size: 1.4rem;
+  }
+
+  .view-subtitle {
+    font-size: 0.85rem;
+  }
+
+  /* ── DASHBOARD GRID — single column ──────────────────────── */
+  .dashboard-grid {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+  .widget-large,
+  .widget-wide {
+    grid-column: span 1;
+  }
+
+  /* ── WIDGET — compact padding ────────────────────────────── */
+  .widget {
+    padding: 16px;
+  }
+
+  .widget-header h3 {
+    font-size: 0.9rem;
+  }
+
+  /* ── MODULE PREVIEW — stack vertically ───────────────────── */
+  .module-preview {
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .module-icon {
+    font-size: 2rem;
+  }
+
+  .action-btn {
+    width: 100%;
+    padding: 12px;
+    font-size: 0.9rem;
+  }
+
+  /* ── CERT CARDS — single column ─────────────────────────── */
+  .certs-grid {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+
+  /* ── BOTTOM NAVIGATION BAR ───────────────────────────────── */
+  .bottom-nav {
+    display: flex;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 800;
+    background: rgba(15, 15, 35, 0.95);
+    backdrop-filter: blur(20px);
+    border-top: 1px solid rgba(108, 99, 255, 0.25);
+    padding: 0;
+    height: 65px;
+    align-items: stretch;
+  }
+
+  .bottom-nav-item {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 3px;
+    cursor: pointer;
+    color: rgba(160, 160, 208, 0.6);
+    font-size: 0.65rem;
+    font-family: 'Inter', sans-serif;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.03em;
+    transition: color 0.2s ease;
+    padding: 8px 4px;
+    border-top: 2px solid transparent;
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  .bottom-nav-item i {
+    font-size: 1.1rem;
+  }
+
+  .bottom-nav-item.active {
+    color: #a78bfa;
+    border-top-color: #6c63ff;
+  }
+
+  .bottom-nav-item:active {
+    background: rgba(108, 99, 255, 0.1);
+  }
+
+  /* Safe area inset for iPhone notch/home indicator */
+  .bottom-nav {
+    padding-bottom: env(safe-area-inset-bottom);
+    height: calc(65px + env(safe-area-inset-bottom));
+  }
+
+}
+
+/* ── BOTTOM NAV — hidden on desktop ─────────────────────────── */
+.bottom-nav {
+  display: none;
+}
+
+/* ── VERY SMALL SCREENS — max-width: 390px ─────────────────── */
+@media (max-width: 390px) {
+
+  .topbar {
+    padding: 10px 12px 10px 54px;
+  }
+
+  .stat-pill {
+    font-size: 0.7rem;
+    padding: 4px 8px;
+  }
+
+  .view-title {
+    font-size: 1.2rem;
+  }
+
+  .widget {
+    padding: 12px;
+  }
+
+  .bottom-nav-item {
+    font-size: 0.6rem;
+  }
+
+  .bottom-nav-item i {
+    font-size: 1rem;
+  }
+}
