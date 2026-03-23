@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aegis Atlas | Command Center</title>
+    <link rel="stylesheet" href="styles.css">
+    <!-- Modern Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    
+    <!-- Background Animated Elements -->
+    <div class="background-orbs">
+        <div class="orb orb-1"></div>
+        <div class="orb orb-2"></div>
+        <div class="orb orb-3"></div>
+    </div>
+
+    <!-- Main Application Layout -->
+    <div class="app-container">
+        
+        <!-- Sidebar Navigation -->
+        <nav class="sidebar glass-panel">
+            <div class="brand">
+                <i class="fa-solid fa-shield-halved"></i>
+                <span>AEGIS ATLAS</span>
+            </div>
+            
+            <div class="nav-menu">
+                <div class="nav-item active" data-target="dashboard">
+                    <i class="fa-solid fa-house"></i>
+                    <span>Command Center</span>
+                </div>
+                <div class="nav-item" data-target="learning-map">
+                    <i class="fa-solid fa-route"></i>
+                    <span>Learning Map</span>
+                </div>
+                <div class="nav-item" data-target="coding-labs">
+                    <i class="fa-solid fa-terminal"></i>
+                    <span>Coding Labs</span>
+                </div>
+                <div class="nav-item" data-target="ai-tutor">
+                    <i class="fa-solid fa-robot"></i>
+                    <span>AI Tutor</span>
+                </div>
+                <div class="nav-item" data-target="exam-simulator">
+                    <i class="fa-solid fa-clipboard-check"></i>
+                    <span>Exam Simulator</span>
+                </div>
+                
+                <div class="nav-divider">Curriculum</div>
+                <div class="nav-item" data-target="security-certs">
+                    <i class="fa-solid fa-certificate"></i>
+                    <span>Security Certs</span>
+                </div>
+                <div class="nav-item" data-target="cloud-arch">
+                    <i class="fa-solid fa-cloud"></i>
+                    <span>Cloud Architecture</span>
+                </div>
+                <div class="nav-item" data-target="ai-arch">
+                    <i class="fa-solid fa-network-wired"></i>
+                    <span>AI Research</span>
+                </div>
+                <div class="nav-item" data-target="languages">
+                    <i class="fa-solid fa-language"></i>
+                    <span>Languages x3</span>
+                </div>
+            </div>
+            
+            <div class="user-profile">
+                <div class="avatar">
+                    <i class="fa-solid fa-user-astronaut"></i>
+                </div>
+                <div class="user-info">
+                    <span class="name">Lafayette Wright</span>
+                    <span class="title">Human Director</span>
+                </div>
+            </div>
+        </nav>
+
+        <!-- Main Content Area -->
+        <main class="main-content">
+            
+            <!-- Topbar -->
+            <header class="topbar glass-panel">
+                <div class="breadcrumbs">
+                    <span>Dashboards</span> <i class="fa-solid fa-chevron-right"></i> <span class="current">Command Center</span>
+                </div>
+                
+                <div class="gamification-stats">
+                    <div class="stat-pill streak">
+                        <i class="fa-solid fa-fire"></i>
+                        <span>14 Day Streak</span>
+                    </div>
+                    <div class="stat-pill xp">
+                        <i class="fa-solid fa-bolt"></i>
+                        <span id="total-xp">14,250 XP</span>
+                    </div>
+                    <div class="stat-pill rank">
+                        <i class="fa-solid fa-crown"></i>
+                        <span>Level 42 Architect</span>
+                    </div>
+                </div>
+            </header>
+
+            <!-- Dynamic Views Container -->
+            <div id="view-container" class="view-container">
+                <!-- Dashboard View (Default) -->
+                <div id="dashboard" class="view active">
+                    <h1 class="view-title">Welcome back, Director.</h1>
+                    <p class="view-subtitle">Your AI architecture agents are standing by. Here is your daily intelligence briefing.</p>
+                    
+                    <div class="dashboard-grid">
+                        
+                        <!-- Next Lesson Widget -->
+                        <div class="widget glass-panel widget-large gradient-border">
+                            <div class="widget-header">
+                                <h3><i class="fa-solid fa-play"></i> Next Learning Module</h3>
+                                <span class="badge">In Progress</span>
+                            </div>
+                            <div class="widget-content module-preview">
+                                <div class="module-icon">
+                                    <i class="fa-brands fa-python"></i>
+                                </div>
+                                <div class="module-details">
+                                    <h4>Python for AI Agents: Tool Implementation</h4>
+                                    <p>Learn how to connect custom tools and APIs to your LangChain agent.</p>
+                                    <div class="progress-bar-container">
+                                        <div class="progress-bar" style="width: 65%;"></div>
+                                        <span>65%</span>
+                                    </div>
+                                </div>
+                                <button class="action-btn glow-effect" onclick="startModule()">Resume Lab</button>
+                            </div>
+                        </div>
+
+                        <!-- Daily Quests -->
+                        <div class="widget glass-panel">
+                            <div class="widget-header">
+                                <h3><i class="fa-solid fa-check-double"></i> Daily Quests</h3>
+                            </div>
+                            <div class="widget-content quests-list">
+                                <div class="quest completed">
+                                    <div class="checkbox"><i class="fa-solid fa-check"></i></div>
+                                    <div class="quest-info">
+                                        <span>Complete 1 Security Lab</span>
+                                        <span class="xp-reward">+50 XP</span>
+                                    </div>
+                                </div>
+                                <div class="quest pending">
+                                    <div class="checkbox"></div>
+                                    <div class="quest-info">
+                                        <span>Chat with AI Tutor</span>
+                                        <span class="xp-reward">+30 XP</span>
+                                    </div>
+                                </div>
+                                <div class="quest pending">
+                                    <div class="checkbox"></div>
+                                    <div class="quest-info">
+                                        <span>Pass a mock AISECARCH quiz</span>
+                                        <span class="xp-reward">+100 XP</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Active Certifications -->
+                        <div class="widget glass-panel widget-wide">
+                            <div class="widget-header">
+                                <h3><i class="fa-solid fa-crosshairs"></i> Certification Tracker</h3>
+                            </div>
+                            <div class="widget-content certs-grid">
+                                <div class="cert-card">
+                                    <i class="fa-solid fa-shield-cat"></i>
+                                    <div class="cert-info">
+                                        <h4>Security AI+</h4>
+                                        <div class="progress-mini"><div class="fill" style="width:80%"></div></div>
+                                        <span>Exam ready in: 2 weeks</span>
+                                    </div>
+                                </div>
+                                <div class="cert-card">
+                                    <i class="fa-brands fa-aws"></i>
+                                    <div class="cert-info">
+                                        <h4>AWS Solutions Architect</h4>
+                                        <div class="progress-mini"><div class="fill" style="width:40%"></div></div>
+                                        <span>Exam ready in: 6 weeks</span>
+                                    </div>
+                                </div>
+                                <div class="cert-card">
+                                    <i class="fa-solid fa-network-wired"></i>
+                                    <div class="cert-info">
+                                        <h4>AISECARCH</h4>
+                                        <div class="progress-mini"><div class="fill" style="width:15%"></div></div>
+                                        <span>Foundation phase</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+                
+                <!-- Placeholder for other views that will be injected via JS -->
+            </div>
+            
+        </main>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
